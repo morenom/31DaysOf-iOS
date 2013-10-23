@@ -41,6 +41,25 @@
     self.labelTwo.text = nil;
 }
 
+- (IBAction)tappedCenter:(id)sender {
+    CLLocationCoordinate2D location;
+    location.latitude = self.locationController.locationManager.location.coordinate.latitude;
+    location.longitude = self.locationController.locationManager.location.coordinate.longitude;
+    [self centerMapToLocation:location];
+}
+
+- (void)centerMapToLocation:(CLLocationCoordinate2D)location {
+    MKCoordinateRegion region;
+    MKCoordinateSpan span;
+    span.latitudeDelta = 0.050;
+    span.longitudeDelta = 0.050;
+    location.latitude = self.locationController.locationManager.location.coordinate.latitude;
+    location.longitude = self.locationController.locationManager.location.coordinate.longitude;
+    region.span = span;
+    region.center = location;
+    [_map setRegion:region animated:YES];
+}
+
 - (IBAction)tappedRemove:(id)sender {
     for (id annotation in self.map.annotations)
         if (![annotation isKindOfClass:[MKUserLocation class]]) {
@@ -49,7 +68,6 @@
 }
 
 - (IBAction)tappedAdd:(id)sender {
-    
     CLLocationCoordinate2D mapPoint;
     mapPoint.longitude = self.locationController.locationManager.location.coordinate.longitude;;
     mapPoint.latitude = self.locationController.locationManager.location.coordinate.latitude;;

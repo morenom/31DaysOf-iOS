@@ -11,6 +11,7 @@
 #import "CoreLocationController.h"
 
 @interface ViewController : UIViewController <CoreLocationControllerDelegate, MKMapViewDelegate>
+- (IBAction)tappedCenter:(id)sender;
 - (IBAction)tappedRemove:(id)sender;
 - (IBAction)tappedAdd:(id)sender;
 @property (weak, nonatomic) IBOutlet MKMapView *map;
