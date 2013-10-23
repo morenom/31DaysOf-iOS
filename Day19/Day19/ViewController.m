@@ -49,9 +49,10 @@
 }
 
 - (IBAction)tappedAdd:(id)sender {
+    
     CLLocationCoordinate2D mapPoint;
-    mapPoint.longitude = -122.132;
-    mapPoint.latitude = 47.624300;
+    mapPoint.longitude = self.locationController.locationManager.location.coordinate.longitude;;
+    mapPoint.latitude = self.locationController.locationManager.location.coordinate.latitude;;
     
     MKPointAnnotation *anny = [[MKPointAnnotation alloc] init];
     anny.coordinate = mapPoint;
